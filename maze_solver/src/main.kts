@@ -9,37 +9,45 @@ data class Cell(
 )
 
 class Maze(private val gridSize: Int) {
-    var maze: Array<Array<Cell>>
+    private var maze = Array(gridSize) { Array(gridSize) { Cell() } }
 
     init {
-        maze = Array(gridSize) { Array(gridSize) { Cell() } }
         generate(0, 0)
     }
 
     fun printMaze() {
-        for (i in 0 until gridSize * 3) {
-            print("X")
-        }
-        println()
-        for (i in 0 until gridSize) {
-            for (j in 0 until gridSize) {
-                if (j == 0) {
-                    print("X")
-                }
-                if (maze[i][j].right) {
-                    print(" X")
-                } else {
-                    print("  ")
-                }
-                if (j == gridSize - 1) {
-                    print(" X")
-                }
+        for (i in maze.indices) {
+            val row = maze[i]
+            printTop(row)
+            printMiddle(row)
+            if (i == maze.size - 1) {
+                printBottom(row)
             }
-            println()
         }
-        for (i in 0 until gridSize * 3) {
-            print("X")
+    }
+
+    private fun printTop(row: Array<Cell>) {
+        for (cell in row) {
+            print(if (cell.top) "+--" else "+  ")
         }
+        println("+")
+    }
+
+    private fun printMiddle(row: Array<Cell>) {
+        for (i in row.indices) {
+            val cell = row[i]
+            print(if (cell.left) "|  " else "   ")
+            if (i == row.size - 1) {
+                println(if (cell.right) "|" else " ")
+            }
+        }
+    }
+
+    private fun printBottom(row: Array<Cell>) {
+        for (cell in row) {
+            print(if (cell.bottom) "+--" else "+  ")
+        }
+        println("+")
     }
 
     private fun generate(row: Int, col: Int) {

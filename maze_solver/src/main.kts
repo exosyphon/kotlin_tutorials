@@ -53,23 +53,23 @@ class Maze(private val gridSize: Int) {
             while (true) {
                 val randomChoice = nextInt(until = 4)
                 if (randomChoice == 0 && withinBounds(row, col + 1) && !maze[row][col + 1].visited) {
-                    maze[row][col].top = false
-                    maze[row][col + 1].bottom = false
+                    maze[row][col].right = false
+                    maze[row][col + 1].left = false
                     generate(row, col + 1)
                     break
                 } else if (randomChoice == 1 && withinBounds(row + 1, col) && !maze[row + 1][col].visited) {
-                    maze[row][col].right = false
-                    maze[row + 1][col].left = false
+                    maze[row][col].bottom = false
+                    maze[row + 1][col].top = false
                     generate(row + 1, col)
                     break
                 } else if (randomChoice == 2 && withinBounds(row, col - 1) && !maze[row][col - 1].visited) {
-                    maze[row][col].bottom = false
-                    maze[row][col - 1].top = false
+                    maze[row][col].left = false
+                    maze[row][col - 1].right = false
                     generate(row, col - 1)
                     break
                 } else if (randomChoice == 3 && withinBounds(row - 1, col) && !maze[row - 1][col].visited) {
-                    maze[row][col].left = false
-                    maze[row - 1][col].right = false
+                    maze[row][col].top = false
+                    maze[row - 1][col].bottom = false
                     generate(row - 1, col)
                     break
                 }

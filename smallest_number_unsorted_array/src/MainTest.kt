@@ -6,19 +6,19 @@ internal class MainTest {
     @Nested
     inner class InefficientSolution {
         @Test
-        fun `returns smallest number when many negative numbers`() {
+        fun `returns smallest number when number is 1`() {
             val input = listOf(2, 3, 7, 6, 8, -1, -10, 15)
             assertEquals(1, example(input))
         }
 
         @Test
-        fun `returns smallest number when many negative numbers version 2`() {
+        fun `returns smallest number when number in middle`() {
             val input = listOf(2, 3, -7, 6, 8, 1, -10, 15)
             assertEquals(4, example(input))
         }
 
         @Test
-        fun `returns smallest number when zero in array`() {
+        fun `returns smallest number when number at end`() {
             val input = listOf(1, 1, 0, -1, -2)
             assertEquals(2, example(input))
         }
@@ -27,19 +27,19 @@ internal class MainTest {
     @Nested
     inner class BucketsSolution {
         @Test
-        fun `returns smallest number when many negative numbers`() {
+        fun `returns smallest number when number is 1`() {
             val input = listOf(2, 3, 7, 6, 8, -1, -10, 15)
             assertEquals(1, exampleWithBuckets(input))
         }
 
         @Test
-        fun `returns smallest number when many negative numbers version 2`() {
+        fun `returns smallest number when number in middle`() {
             val input = listOf(2, 3, -7, 6, 8, 1, -10, 15)
             assertEquals(4, exampleWithBuckets(input))
         }
 
         @Test
-        fun `returns smallest number when zero in array`() {
+        fun `returns smallest number when number at end`() {
             val input = listOf(1, 1, 0, -1, -2)
             assertEquals(2, exampleWithBuckets(input))
         }
@@ -48,19 +48,19 @@ internal class MainTest {
     @Nested
     inner class FunctionalSolution {
         @Test
-        fun `returns smallest number when many negative numbers`() {
+        fun `returns smallest number when number is 1`() {
             val input = listOf(2, 3, 7, 6, 8, -1, -10, 15)
             assertEquals(1, exampleFunctional(input))
         }
 
         @Test
-        fun `returns smallest number when many negative numbers version 2`() {
+        fun `returns smallest number when number in middle`() {
             val input = listOf(2, 3, -7, 6, 8, 1, -10, 15)
             assertEquals(4, exampleFunctional(input))
         }
 
         @Test
-        fun `returns smallest number when zero in array`() {
+        fun `returns smallest number when number at end`() {
             val input = listOf(1, 1, 0, -1, -2)
             assertEquals(2, exampleFunctional(input))
         }

@@ -1,5 +1,3 @@
-import java.util.*
-
 /*
   https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
   You are given an unsorted array with both positive and negative elements.
@@ -51,21 +49,18 @@ fun exampleWithBuckets(input: List<Int>): Int {
 }
 
 fun exampleFunctional(input: List<Int>): Int {
-    var resultFound = false
-    var result = 1
+    var result = 0
     input.filter { it > 0 }
         .distinct()
         .sorted()
-        .also {
-            it.forEachIndexed { i, data ->
-                if ((i + 1) != data && !resultFound) {
-                    result = i + 1
-                    resultFound = true
-                }
+        .reduceIndexed { i, acc, data ->
+            if (i != acc && result == 0) {
+                result = i
             }
+            data
         }.also {
-            if (!resultFound) {
-                result = it.last() + 1
+            if (result == 0) {
+                result = it + 1
             }
         }
 

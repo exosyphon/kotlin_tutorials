@@ -7,18 +7,16 @@
 fun example(input: List<Int>): Int {
     val sortedInput = input.filter { it > 0 }.distinct().sorted()
 
-    var result = 1
-    var resultFound = false
+    var result = 0
     var i = 0
     while (i < sortedInput.size) {
         if ((i + 1) != sortedInput[i]) {
             result = i + 1
-            resultFound = true
             break
         }
         i++;
     }
-    if (!resultFound) {
+    if (result == 0) {
         result = sortedInput.last() + 1
     }
     return result
